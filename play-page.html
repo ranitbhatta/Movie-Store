@@ -1,116 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fighter</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel=" shortcut icon" href="fav-icon.png" type="fav-icon">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
-</head>
-<body>
-    <header>
-    <div class="nav container">
-        <a href="index.html" class="logo">
-            Movie<span>Store</span>
-        </a>
-        <div class="search-box">
-            <input type="search" name="" id="search-input" placeholder="Search movie">
-            <i class='bx bx-search-alt-2'></i>
-        </div>
-        <a href="#" class="user">
-            <img src="user.jpg" alt="" class="user-img">
-        </a>
-        <div class="navbar">
-            <a href="index.html" class="nav-link nav-active">
-                <i class='bx bx-home-alt'></i>
-                <span class="nav-link-title">Home</span>
-            </a>
-            <a href="#home" class="nav-link">
-                <i class='bx bxs-hot'></i>
-                <span class="nav-link-title">Trending</span>
-            </a>
-            <a href="#home" class="nav-link">
-                <i class='bx bx-compass' ></i>
-                <span class="nav-link-title">Explore</span>
-            </a>
-            <a href="#home" class="nav-link">
-                <i class='bx bx-tv' ></i>
-                <span class="nav-link-title">Movies</span>
-            </a>
-            <a href="#home" class="nav-link">
-                <i class='bx bxs-heart-circle'></i>
-                <span class="nav-link-title">Favourite</span>
-            </a>
-        </div>
-    </div>
-    </header>
-    <div class="play-container container">
-        <img src="play-background.jpg" alt="" class="play-img">
-        <div class="play-text">
-            <h2>Fighter</h2>
-            <div class="rating">
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star-half'></i>
-            </div>
-            <div class="tags">
-                <span>Action</span>
-                <span>Adventure</span>
-                <span>4K</span>
-            </div>
-            <a href="#" class="watch-btn">
-                <i class='bx bxs-right-arrow'></i>
-                <span>Watch the trailer</span>
-            </a>
-        </div>
-        <i class='bx bxs-right-arrow play-movie'></i>
-        <div class="video-container">
-            <div class="video-box">
-                <video id="myvideo" src="Jumanji.mp4" controls></video>
-                <i class='bx bx-x close-video'></i>
-            </div>
-        </div>
-    </div>
-    <div class="about-movie container">
-        <h2>Ready For Fight</h2>
-        <p>Fighter is an upcoming Indian Hindi-language action film directed by Siddharth Anand and produced by Viacom18 Studios and Marflix Pictures. The film stars Deepika Padukone, Hrithik Roshan and Anil Kapoor, and serves as the first film in a planned aerial action franchise.[3]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07080d">
+  <title>Cinemora — Movie</title>
 
-            The film was announced on 10 January 2021. The pre-production was much delayed by the COVID-19 pandemic. Principal photography finally began in November 2022 with filming proceeding in various schedules across Assam, Hyderabad, Jammu & Kashmir and Mumbai, and wrapped by late-October. Real life Indian Air Force cadets worked for the film.[4] The film's soundtrack album composed by the duo Vishal–Shekhar consists of five songs, with Satchith Paulose as the cinematographer. The visuals are handled by DNEG.</p>
-        <h2 class="cast-heading">Movie Cast</h2>
-        <div class="cast">
-            <div class="cast-box">
-                <img src="hr.jpg" alt="" class="cast-img">
-                <span class="cast-title">Hrithik Roshan</span>
-            </div>
-            <div class="cast-box">
-                <img src="dee..jpg" alt="" class="cast-img">
-                <span class="cast-title">Deepika Padukone</span>
-            </div>
-            <div class="cast-box">
-                <img src="ani.jpg" alt="" class="cast-img">
-                <span class="cast-title">Anil Kapoor</span>
-            </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="detail-page">
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="loader-mark"><span>C</span></div><div class="loader-line"><i></i></div>
+  </div>
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="noise"></div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-shell container">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span><span class="brand-copy"><strong>Cinemora</strong><em>Film Society</em></span></a>
+      <div class="desktop-search search-box">
+        <i class="bx bx-search"></i><input id="searchInput" type="search" placeholder="Search movies, genres..." autocomplete="off"><kbd>/</kbd>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchToggle" aria-label="Open search"><i class="bx bx-search"></i></button>
+        <button class="icon-btn" id="favoritesBtn" aria-label="Show favourites"><i class="bx bx-heart"></i><span class="count-badge" id="favCount">0</span></button>
+        <button class="avatar-btn" aria-label="Profile"><span>RB</span></button>
+      </div>
+      <div class="mobile-search search-box" id="mobileSearch"><i class="bx bx-search"></i><input id="mobileSearchInput" type="search" placeholder="Search movies..." autocomplete="off"></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="detail-hero container" id="detailHero">
+      <div class="detail-art"><img id="detailImage" src="fighter.jpg" alt=""><div class="detail-shade"></div></div>
+      <div class="detail-copy reveal">
+        <a href="index.html" class="back-link"><i class="bx bx-arrow-back"></i> Back to collection</a>
+        <span class="section-kicker" id="detailKicker">Cinemora original pick</span>
+        <h1 id="detailTitle">Fighter</h1>
+        <div class="detail-meta" id="detailMeta"></div>
+        <div class="tag-row" id="detailTags"></div>
+        <p id="detailDescription"></p>
+
+        <div class="detail-actions">
+          <button class="btn btn-primary" id="playTrailer"><i class="bx bx-play"></i> Play trailer</button>
+          <button class="btn btn-glass" id="saveMovie"><i class="bx bx-heart"></i> <span>Save</span></button>
         </div>
+
+        <div class="fact-strip">
+          <div><span>Rating</span><strong id="detailRating">4.8</strong></div>
+          <div><span>Quality</span><strong>4K</strong></div>
+          <div><span>Audio</span><strong>Dolby</strong></div>
+          <div><span>Status</span><strong>Featured</strong></div>
         </div>
-        <div class="download">
-            <h2 class="download-title">Download Movie Trailer</h2>
-            <div class="download-links">
-                <a href="Jumanji.mp4" download>480p</a>
-                <a href="Jumanji.mp4" download>720p</a>
-                <a href="Jumanji.mp4" download>1080p</a>
-            </div>
-        </div>
-    <div class="copyright">
-        <p>&#169; Movie Store All Right Reserved</p>
+      </div>
+    </section>
+
+    <section class="detail-section container reveal">
+      <div class="detail-columns">
+        <article class="info-card">
+          <span class="section-kicker">Synopsis</span>
+          <h2>Ready for the <em>big screen?</em></h2>
+          <p id="detailLong"></p>
+        </article>
+        <article class="info-card">
+          <span class="section-kicker">Cast</span>
+          <div class="cast-list" id="castList"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section container reveal">
+      <div class="section-head">
+        <div><span class="section-kicker">You may also like</span><h2>More <em>stories</em></h2></div>
+      </div>
+      <div class="movie-row" id="relatedRow"></div>
+    </section>
+  </main>
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-backdrop" id="videoBackdrop"></div>
+    <div class="video-shell">
+      <div class="video-head">
+        <strong id="videoTitle">Trailer</strong>
+        <button id="closeVideo" class="modal-close" aria-label="Close video"><i class="bx bx-x"></i></button>
+      </div>
+      <video id="trailerVideo" controls preload="metadata" playsinline>
+        <source src="trailer-demo.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="video-note">Demo video source included with the project. Replace <code>trailer-demo.mp4</code> with your own licensed trailer.</div>
     </div>
-    <script src="swiper-bundle.min.js"></script>
-    <script src="script.js"></script> 
-    
+  </div>
+
+  <div class="toast" id="toast"><i class="bx bx-check-circle"></i><span>Saved to favourites</span></div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>Cinemora</strong><span>Stories worth staying for.</span></div>
+      <p>© 2026 Cinemora Film Society. Demo UI.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
